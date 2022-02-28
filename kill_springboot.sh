@@ -1,6 +1,12 @@
 #!/bin/bash
 SERVER_PORT=$1
 
+if [ -z "$SERVER_PORT" ]
+then
+        echo "required argument not served"
+        exit 1
+fi
+
 PROCESS=$(netstat -nap | grep :${SERVER_PORT} | awk '{print $7}')
 
 if [ -z "${PROCESS}" ]
